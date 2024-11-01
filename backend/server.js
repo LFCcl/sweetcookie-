@@ -69,7 +69,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: 'https://shiny-kleicha-871163.netlify.app', // Your Netlify URL  
+  origin: 'https://sashazhang-resume.netlify.app', // Your Netlify URL  
   //origin: 'https://localhost:3000', //localhost, update with Netlify URL
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type']

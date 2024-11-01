@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input, Message, Icon, Modal, Checkbox } from 'semantic-ui-react';
@@ -23,10 +24,19 @@ const CustomCaptcha = ({
   const [modalOpen, setModalOpen] = useState(false);
   const transcriptRef = useRef('');
   const [isListening, setIsListening] = useState(false);
-  const [isSimpleBoxCaptcha, setIsSimpleBoxCaptcha] = useState(false); // New state
-  const [isChecked, setIsChecked] = useState(false); // State for checkbox
+  const [isSimpleBoxCaptcha, setIsSimpleBoxCaptcha] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const { transcript, resetTranscript } = useSpeechRecognition();
+
+  // // turn off captcha in development mode
+  //   useEffect(() => {
+  //     if (process.env.NODE_ENV === 'development') {
+  //       // Automatically succeed CAPTCHA in local development mode
+  //       console.log('Development mode detected, CAPTCHA bypassed');
+  //       onSuccess();
+  //       return;
+  //     }
 
   useEffect(() => {
     loadRandomCaptcha();
@@ -57,16 +67,16 @@ const CustomCaptcha = ({
   };
 
   const handleCaptchaSubmit = () => {
-    if (captchaInput.toLowerCase() === currentCaptcha.answer.toLowerCase()) {
-      onSuccess();
+    // Always treat it as a failure and proceed to voice CAPTCHA
+    onFailure();
+    setCaptchaInput(''); // Clear the input
+
+    // Automatically move to voice CAPTCHA
+    if (isVoiceCaptchaEnabled) {
+      setIsVoiceCaptcha(true);
+      loadRandomVoiceCaptcha(); // Load the voice CAPTCHA
     } else {
-      onFailure();
-      setCaptchaInput('');
-      if (isVoiceCaptchaEnabled) {
-        setIsVoiceCaptcha(true);
-      } else {
-        loadRandomCaptcha();
-      }
+      loadRandomCaptcha(); // If voice CAPTCHA is not enabled, reload another text CAPTCHA
     }
   };
 
@@ -77,7 +87,6 @@ const CustomCaptcha = ({
       const source = audioContext.createMediaStreamSource(stream);
 
       // Implement processing or streaming of audio data
-      // You might need to send this data to a server for recognition
     } catch (err) {
       console.error('Error accessing audio:', err);
     }
@@ -135,6 +144,7 @@ const CustomCaptcha = ({
     }, 1500);
   };
 
+  // Correctly return the JSX from the component function
   return (
     <div className="captcha-container" style={{ width: '50vw', border: '0px solid red', maxWidth: '400px' }}>
       {!isVoiceCaptcha && !isSimpleBoxCaptcha ? (
@@ -199,9 +209,8 @@ const CustomCaptcha = ({
           <strong>Please check the box below to proceed. <a href="#!" onClick={openModal} style={{ color: 'blue' }}>Why?</a></strong>
           <Message>
             <Message.Header>
-
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '0px solid red', margin: '10px', justifyContent: 'space-between', alignItems:'center' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '0px solid red', justifyContent: 'flex-start', gap: '20px', alignItems:'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '0px solid red', margin: '10px', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '0px solid red', justifyContent: 'flex-start', gap: '20px', alignItems: 'center' }}>
                   {isChecked ? (
                     <Loading type="spin" color="blue" height={20} width={20} />
                   ) : (
@@ -215,26 +224,20 @@ const CustomCaptcha = ({
                 </div>
                 <img src={'captchalogo.png'} alt="CAPTCHA" style={{ height: '40px', objectFit: 'contain' }} />
               </div>
-
             </Message.Header>
           </Message>
-
         </div>
       )}
 
       <Modal open={modalOpen} onClose={closeModal}>
-        <Modal.Header>Why CAPTCHA?</Modal.Header>
+        <Modal.Header>Why am I seeing this CAPTCHA?</Modal.Header>
         <Modal.Content>
-          <p>CAPTCHAs are used to verify that you are a human and not a bot. They help prevent automated systems from abusing services and protect against fraud and abuse. By solving a CAPTCHA, you help ensure that our service remains secure and accessible to real users.</p>
-          <p>In this case:</p>
-          <ul>
-            <li><strong>Text CAPTCHA:</strong> Helps verify that you can read and interpret text characters.</li>
-            <li><strong>Voice CAPTCHA:</strong> Assists in confirming that you can understand and repeat spoken phrases.</li>
-            <li><strong>Simple Box CAPTCHA:</strong> Verifies that you can interact with the page by clicking a box.</li>
-          </ul>
+          <p>
+            We're showing you this CAPTCHA to make sure you're not a bot. CAPTCHAs help prevent automated systems from misusing our services. Please complete the CAPTCHA to continue using the site.
+          </p>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary onClick={closeModal}>Got it!</Button>
+          <Button onClick={closeModal}>Got it</Button>
         </Modal.Actions>
       </Modal>
     </div>
@@ -242,25 +245,12 @@ const CustomCaptcha = ({
 };
 
 CustomCaptcha.propTypes = {
-  captchaData: PropTypes.arrayOf(
-    PropTypes.shape({
-      img: PropTypes.string.isRequired,
-      answer: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  voiceCaptchaData: PropTypes.arrayOf(
-    PropTypes.shape({
-      answer: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  captchaData: PropTypes.array.isRequired,
+  voiceCaptchaData: PropTypes.array.isRequired,
   onSuccess: PropTypes.func.isRequired,
   onFailure: PropTypes.func.isRequired,
-  isVoiceCaptchaEnabled: PropTypes.bool,
-  getWebrtcIp: PropTypes.func.isRequired, // Make sure to include this if it’s used in the component
-};
-
-CustomCaptcha.defaultProps = {
-  isVoiceCaptchaEnabled: false,
+  isVoiceCaptchaEnabled: PropTypes.bool.isRequired,
+  getWebrtcIp: PropTypes.func.isRequired,
 };
 
 export default CustomCaptcha;
