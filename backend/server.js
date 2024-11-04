@@ -6,7 +6,8 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: 'https://sashazhang-resume.netlify.app', // Your Netlify URL  
+  origin: 'https://knowsasha.wixsite.com/myportfolio',
+  //origin: 'https://sashazhang-resume.netlify.app', // Your Netlify URL  
   //origin: 'https://localhost:3000', //localhost, update with Netlify URL
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type']
