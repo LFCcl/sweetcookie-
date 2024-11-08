@@ -36,6 +36,7 @@ app.post('/api/log', (req, res) => {
       throw new Error('Message is missing in request body');
     }
     console.log(message);
+    console.log("noob")
     res.status(200).send('Log received');
   } catch (error) {
     console.error(`Error in /api/log: ${error.message}`);
