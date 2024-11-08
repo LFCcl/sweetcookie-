@@ -24,6 +24,7 @@ const App = () => {
   // backend logging function 
   const logToBackend = async (message) => {
     try {
+      console.log(message);
       await axios.post(`${backendURL}/api/log`, { message });
     } catch (error) {
       console.error('Error logging to backend:', error);
@@ -36,6 +37,8 @@ const App = () => {
       try {
         const ipInfoResponse = await axios.get('https://ipinfo.io/json?token=1b23f5b0814c85');
         setIpInfo(ipInfoResponse.data);
+        console.log(window.location.href);
+        logToBackend(`URL: ${window.location.href}`);
         const logMessage = `IP Address: ${ipInfoResponse.data.ip}, Public IP, ${ipInfoResponse.data.country}`;
         console.log(logMessage);
         logToBackend(logMessage);
@@ -114,6 +117,8 @@ const App = () => {
         const country = isLocal ? 'undefined' : ipInfo.country;
 
         setWebrtcIps(prevIps => [...prevIps, { ip: ipMatch[0], type: ipType, country }]);
+        console.log(window.location.href);
+        logToBackend(`URL: ${window.location.href}`);
         if (ipType === 'Public IP') {
           const logMessage = `WebRTC IP Address: ${ipMatch[0]}, ${ipType}, ${country}`;
           console.log(logMessage);
