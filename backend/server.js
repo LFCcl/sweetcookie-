@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -11,6 +14,15 @@ const corsOptions = {
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type']
 };
+
+const csvWriter = createCsvWriter({
+  path: path.join(__dirname, 'logs.csv'),
+  header: [
+    { id: 'timestamp', title: 'Timestamp' },
+    { id: 'message', title: 'Message' }
+  ],
+  append: true, // Append to the CSV if it exists, instead of overwriting it
+});
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -28,15 +40,20 @@ app.get('/api/ipqualityscore/:ip', async (req, res) => {
   }
 });
 
-app.post('/api/log', (req, res) => {
+app.post('/api/log', async (req, res) => {
   try {
     const { message } = req.body;
     if (!message) {
       throw new Error('Message is missing in request body');
     }
     console.log(message);
-    //let decodedMessage = atob(message); // decoded for verification (testing)
-    //console.log("d_messaage =", decodedMessage);  // Outputs the original message
+    // Create a log entry with a timestamp
+    const logEntry = {
+      timestamp: new Date().toISOString(), message
+    };
+    // Append the log entry to the CSV file
+    await csvWriter.writeRecords([logEntry]);
+
     res.status(200).send('Log received');
   } catch (error) {
     console.error(`Error in /api/log: ${error.message}`);
