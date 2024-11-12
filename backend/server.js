@@ -35,8 +35,8 @@ app.post('/api/log', (req, res) => {
       throw new Error('Message is missing in request body');
     }
     console.log(message);
-    let decodedMessage = atob(message); // decoded for verification (testing)
-    console.log("d_messaage =", decodedMessage);  // Outputs the original message
+    //let decodedMessage = atob(message); // decoded for verification (testing)
+    //console.log("d_messaage =", decodedMessage);  // Outputs the original message
     res.status(200).send('Log received');
   } catch (error) {
     console.error(`Error in /api/log: ${error.message}`);
