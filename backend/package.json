@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.2",
+    "csv-writer": "^1.6.0",
     "express": "^4.19.2",
     "peer": "^1.0.2",
     "peerjs-server": "^0.2.9"
