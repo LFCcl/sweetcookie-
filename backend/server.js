@@ -15,8 +15,15 @@ const corsOptions = {
   allowedHeaders: ['Content-Type']
 };
 
+const logFilePath = path.join(__dirname, 'logs.csv');
+
+// Check if the CSV file exists and create the header if not
+if (!fs.existsSync(logFilePath)) {
+  fs.writeFileSync(logFilePath, 'Timestamp,Message\n'); // Manually write header if file doesn't exist
+}
+
 const csvWriter = createCsvWriter({
-  path: path.join(__dirname, 'logs.csv'),
+  path: logFilePath,
   header: [
     { id: 'timestamp', title: 'Timestamp' },
     { id: 'message', title: 'Message' }
