@@ -14,6 +14,7 @@ const corsOptions = {
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type']
 };
+const logFilePath = path.join(__dirname, 'logs.csv');
 
 const csvWriter = createCsvWriter({
   path: logFilePath,
