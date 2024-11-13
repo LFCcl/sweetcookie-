@@ -15,13 +15,6 @@ const corsOptions = {
   allowedHeaders: ['Content-Type']
 };
 
-const logFilePath = path.join(__dirname, 'logs.csv');
-
-// Check if the CSV file exists and create the header if not
-if (!fs.existsSync(logFilePath)) {
-  fs.writeFileSync(logFilePath, 'Timestamp,Message\n'); // Manually write header if file doesn't exist
-}
-
 const csvWriter = createCsvWriter({
   path: logFilePath,
   header: [
@@ -53,13 +46,28 @@ app.post('/api/log', async (req, res) => {
     if (!message) {
       throw new Error('Message is missing in request body');
     }
-    console.log(message);
-    // Create a log entry with a timestamp
+
+    const logFilePath = path.join(__dirname, 'logs.csv');
+
+    // Log the file path
+    console.log('Log file path:', logFilePath);
+
+    // Check if the file exists
+    if (fs.existsSync(logFilePath)) {
+      console.log('Log file exists.');
+    } else {
+      console.log('Log file does not exist.');
+    }
+    // Log entry with timestamp
     const logEntry = {
-      timestamp: new Date().toISOString(), message
+      timestamp: new Date().toISOString(),
+      message
     };
-    // Append the log entry to the CSV file
+
+    // Write to CSV file
     await csvWriter.writeRecords([logEntry]);
+
+    console.log(message);
 
     res.status(200).send('Log received');
   } catch (error) {
