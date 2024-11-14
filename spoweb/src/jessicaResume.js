@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaBriefcase, FaHome, FaEnvelope, FaPhone, FaAsterisk, FaGlobe, FaSuitcase, FaCertificate, FaCalendar, FaFacebook, FaInstagram, FaSnapchat, FaPinterest, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import boyImage from './boy.png';
 
 function JessicaResume() {
     return (
@@ -36,7 +35,6 @@ function JessicaResume() {
                         <div className="w3-third">
                             <div className="w3-white w3-text-grey w3-card-4">
                                 <div className="w3-display-container">
-                                    <img src={boyImage} alt="Avatar" style={{ width: '100%' }} />
                                     <div className="w3-display-bottomleft w3-container w3-text-black">
                                         <h2>Jessica Lee Wang Ting</h2>
                                     </div>
@@ -103,15 +101,13 @@ function JessicaResume() {
                             <div className="w3-container w3-card w3-white">
                                 <h2 className="w3-text-grey w3-padding-16"><FaCertificate className="w3-margin-right w3-xxlarge w3-text-teal" />Education</h2>
                                 <div className="w3-container">
-                                    <h5 className="w3-opacity"><b>Bartley Secondary School</b></h5>
-                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />Jan 2018 - Dec 2022</h6>
-                                    <p>Completed secondary education with a focus on foundational skills and knowledge. Participated in various school activities and developed strong organizational and teamwork abilities.</p>
-                                    <hr />
+                                    <h5 className="w3-opacity"><b>Crescent Girls'School</b></h5>
+                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />January 2014 - November 2017</h6>
                                 </div>
                                 <div className="w3-container">
-                                    <h5 className="w3-opacity"><b>Singapore Polytechnic (Arts Business Management)</b></h5>
-                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />Jan 2023 - Present</h6>
-                                    <p>Diploma in Arts Business Management, focusing on business principles, management strategies, and creative industries. Gained practical experience through projects and internships, enhancing skills in business analysis, communication, and leadership.</p>
+                                    <h5 className="w3-opacity"><b>Temasek Polytechnic</b></h5>
+                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />April 2018 - April 2021</h6>
+                                    <p>Diploma in Visual Communications.</p>
                                     <hr />
                                 </div>
                             </div>
