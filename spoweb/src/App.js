@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import CustomCaptcha from './CustomCaptcha';
-// import Resume from './Resume';
 import { captchaData, voiceCaptchaData } from './captchaData';
 import SpeechRecognition from 'react-speech-recognition';
 import SashaResume from './SashaResume';
 import Resume from './Resume';
+import jessicaResume from './jessicaResume';
 
 
 const App = () => {

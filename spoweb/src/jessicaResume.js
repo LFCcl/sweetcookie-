@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaBriefcase, FaHome, FaEnvelope, FaPhone, FaAsterisk, FaGlobe, FaSuitcase, FaCertificate, FaCalendar, FaFacebook, FaInstagram, FaSnapchat, FaPinterest, FaTwitter, FaLinkedin } from 'react-icons/fa';
-//import boyImage from './boy.png';
+import boyImage from './boy.png';
 
 function jessicaResume() {
     return (
