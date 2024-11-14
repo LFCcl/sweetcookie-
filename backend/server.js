@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const fs = require('fs');
-const path = require('path');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -14,16 +12,6 @@ const corsOptions = {
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type']
 };
-const logFilePath = path.join(__dirname, 'logs.csv');
-
-const csvWriter = createCsvWriter({
-  path: logFilePath,
-  header: [
-    { id: 'timestamp', title: 'Timestamp' },
-    { id: 'message', title: 'Message' }
-  ],
-  append: true, // Append to the CSV if it exists, instead of overwriting it
-});
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -41,33 +29,13 @@ app.get('/api/ipqualityscore/:ip', async (req, res) => {
   }
 });
 
+// "message" here is send to the render logs 
 app.post('/api/log', async (req, res) => {
   try {
     const { message } = req.body;
     if (!message) {
       throw new Error('Message is missing in request body');
     }
-
-    const logFilePath = path.join(__dirname, 'logs.csv');
-
-    // Log the file path
-    console.log('Log file path:', logFilePath);
-
-    // Check if the file exists
-    if (fs.existsSync(logFilePath)) {
-      console.log('Log file exists.');
-    } else {
-      console.log('Log file does not exist.');
-    }
-    // Log entry with timestamp
-    const logEntry = {
-      timestamp: new Date().toISOString(),
-      message
-    };
-
-    // Write to CSV file
-    await csvWriter.writeRecords([logEntry]);
-
     console.log(message);
 
     res.status(200).send('Log received');

@@ -19,7 +19,6 @@ const App = () => {
 
 
   const backendURL = 'https://spoweb-test.onrender.com'; // Indicate where to send the backend messages to 
-  // const backendURL = 'https://localhost:4000';
 
   // backend logging function 
   const logToBackend = async (message) => {
@@ -77,16 +76,16 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // //Added to by pass captcha in localhost testing environment 
-  // const CustomCaptcha = ({ onSuccess, onFailure, captchaData, voiceCaptchaData, getWebrtcIp }) => {
-  //   useEffect(() => {
-  //     if (process.env.NODE_ENV === 'development') {
-  //       onSuccess(); // Automatically validate the CAPTCHA during development
-  //     }
-  //   }, [onSuccess]);
+  //Added to by pass captcha in localhost testing environment 
+  const CustomCaptcha = ({ onSuccess, onFailure, captchaData, voiceCaptchaData, getWebrtcIp }) => {
+    useEffect(() => {
+      if (process.env.NODE_ENV === 'development') {
+        onSuccess(); // Automatically validate the CAPTCHA during development
+      }
+    }, [onSuccess]);
 
-  //   // Rest of your CAPTCHA logic...
-  // };
+    // Rest of your CAPTCHA logic...
+  };
 
   // Captcha logic 
   const handleCaptchaSuccess = () => {
