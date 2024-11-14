@@ -2,7 +2,7 @@ import React from 'react';
 import { FaBriefcase, FaHome, FaEnvelope, FaPhone, FaAsterisk, FaGlobe, FaSuitcase, FaCertificate, FaCalendar, FaFacebook, FaInstagram, FaSnapchat, FaPinterest, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import boyImage from './boy.png';
 
-function jessicaResume() {
+function JessicaResume() {
     return (
         <div className="App">
             <style>{`
@@ -38,42 +38,34 @@ function jessicaResume() {
                                 <div className="w3-display-container">
                                     <img src={boyImage} alt="Avatar" style={{ width: '100%' }} />
                                     <div className="w3-display-bottomleft w3-container w3-text-black">
-                                        <h2>Lim Wen Jun</h2>
+                                        <h2>Jessica Lee Wang Ting</h2>
                                     </div>
                                 </div>
                                 <div className="w3-container">
                                     <p><FaBriefcase className="w3-margin-right w3-large w3-text-teal" />Student</p>
                                     <p><FaHome className="w3-margin-right w3-large w3-text-teal" />Singapore</p>
-                                    <p><FaEnvelope className="w3-margin-right w3-large w3-text-teal" />[Email]</p>
-                                    <p><FaPhone className="w3-margin-right w3-large w3-text-teal" />[Phone]</p>
+                                    <p><FaEnvelope className="w3-margin-right w3-large w3-text-teal" />jessWT10@gmail.com</p>
+                                    <p><FaPhone className="w3-margin-right w3-large w3-text-teal" />88702836</p>
                                     <hr />
-                                    <p className="w3-large"><b><FaAsterisk className="w3-margin-right w3-text-teal" />Skills</b></p>
-                                    <p>Teamwork</p>
+                                    <p className="w3-large"><b><FaAsterisk className="w3-margin-right w3-text-teal" />Technical Skills</b></p>
+                                    <p>Adobe Creative Suite (Photoshop, Illustrator, InDesign)</p>
                                     <div className="progress-container">
                                         <div className="progress-bar" style={{ width: '90%', backgroundColor: '#009688' }}>90%</div>
                                     </div>
-                                    <p>Photoshop</p>
+                                    <p> Digital design</p>
                                     <div className="progress-container">
                                         <div className="progress-bar" style={{ width: '80%', backgroundColor: '#009688' }}>80%</div>
                                     </div>
-                                    <p>Problem Solving</p>
+                                    <p>UI/IX Design </p>
                                     <div className="progress-container">
                                         <div className="progress-bar" style={{ width: '75%', backgroundColor: '#009688' }}>75%</div>
                                     </div>
-                                    <p>Flexibility</p>
-                                    <div className="progress-container">
-                                        <div className="progress-bar" style={{ width: '50%', backgroundColor: '#009688' }}>50%</div>
-                                    </div>
                                     <br />
-                                    <p className="w3-large w3-text-theme"><b><FaGlobe className="w3-margin-right w3-text-teal" />Languages</b></p>
-                                    <p>English</p>
-                                    <div className="progress-container">
-                                        <div className="progress-bar" style={{ width: '100%', backgroundColor: '#009688' }}></div>
-                                    </div>
-                                    <p>Chinese</p>
-                                    <div className="progress-container">
-                                        <div className="progress-bar" style={{ width: '55%', backgroundColor: '#009688' }}></div>
-                                    </div>
+                                    <p className="w3-large w3-text-theme"><b><FaGlobe className="w3-margin-right w3-text-teal" />Soft skills</b></p>
+                                    <p>- Creative</p>
+                                    <p>- Adaptable </p>
+                                    <p>- Open to feedback </p>
+                                    <p>- organised </p>
                                     <br />
                                 </div>
                             </div>
@@ -82,27 +74,32 @@ function jessicaResume() {
                         <div className="w3-twothird">
 
                             <div className="w3-container w3-card w3-white w3-margin-bottom">
-                                <h2 className="w3-text-grey w3-padding-16"><FaSuitcase className="w3-margin-right w3-xxlarge w3-text-teal" />Work Experience</h2>
+                                <h2 className="w3-text-grey w3-padding-16"><FaSuitcase className="w3-margin-right w3-xxlarge w3-text-teal" />Experience</h2>
                                 <div className="w3-container">
-                                    <h5 className="w3-opacity"><b>F&B Waiter / Wibly Lu</b></h5>
-                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />Jun 2023 - Aug 2023</h6>
-                                    <p>Provided excellent customer service in a fast-paced environment, effectively managing orders and ensuring customer satisfaction. Handled cash and card transactions, maintained cleanliness and organization of the work area, and collaborated with team members to improve service efficiency.</p>
+                                    <h5 className="w3-opacity"><b>Graphic designer Breworks Design & Communications Pte Ltd  </b></h5>
+                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />June 2021 - Current</h6>
+                                    <p>Designed using Adobe Creative Suite tools to create various digital and print materials, including brochures, banners, logos, and social media content.</p>
+                                    <p>Collaborated with the marketing and product teams to create visually appealing designs for marketing campaigns, websites, and product packaging.</p>
+                                    <p>Managed multiple projects simultaneously, ensuring all deadlines were met while maintaining high-quality design standards.</p>
                                     <hr />
                                 </div>
                                 <div className="w3-container">
-                                    <h5 className="w3-opacity"><b>Sales Associate / Giordano</b></h5>
-                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />Dec 2022 - May 2023</h6>
-                                    <p>Engaged with customers to understand their needs and provide personalized product recommendations. Managed inventory, processed sales transactions, and handled customer inquiries and complaints effectively. Worked with team members to achieve sales targets and maintain a positive store environment.</p>
+                                    <h5 className="w3-opacity"><b>Designer Intern (Work Attachment) </b></h5>
+                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />April 2020 - October 2020</h6>
+                                    <p>Assisted the design team in creating digital and print materials, including social media graphics, posters, and brochures.</p>
+                                    <p>Participated in brainstorming sessions to generate fresh design concepts and ideas.</p>
                                     <hr />
-                                </div>
-                                <div className="w3-container">
-                                    <h5 className="w3-opacity"><b>Food Drive Volunteer / Hong Kah North CC</b></h5>
-                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />Jul 2022 - Nov 2022</h6>
-                                    <p>Assisted in organizing and distributing food to beneficiaries, coordinated with other volunteers to streamline operations, and contributed to outreach efforts to increase community involvement. Ensured the accurate handling and distribution of food items while maintaining a respectful and supportive environment.</p>
-                                    <br />
                                 </div>
                             </div>
-
+                            <div className="w3-container w3-card w3-white w3-margin-bottom">
+                                <h2 className="w3-text-grey w3-padding-16"><FaCertificate className="w3-margin-right w3-xxlarge w3-text-teal" />Co-Curricular Activities</h2>
+                                <div className="w3-container">
+                                    <h5 className="w3-opacity"><b>Volleyball</b></h5>
+                                    <h6 className="w3-text-teal"><FaCalendar className="w3-margin-right" />2014-2017</h6>
+                                    <p>Participated in National school games twice.</p>
+                                    <hr />
+                                </div>
+                            </div>
                             <div className="w3-container w3-card w3-white">
                                 <h2 className="w3-text-grey w3-padding-16"><FaCertificate className="w3-margin-right w3-xxlarge w3-text-teal" />Education</h2>
                                 <div className="w3-container">
@@ -137,4 +134,4 @@ function jessicaResume() {
     );
 }
 
-export default jessicaResume;
+export default JessicaResume;

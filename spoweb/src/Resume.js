@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaBriefcase, FaHome, FaEnvelope, FaPhone, FaAsterisk, FaGlobe, FaSuitcase, FaCertificate, FaCalendar, FaFacebook, FaInstagram, FaSnapchat, FaPinterest, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import boyImage from './boy.png';
+//import boyImage from './boy.png';
 
 function Resume() {
     return (
@@ -36,7 +36,7 @@ function Resume() {
                         <div className="w3-third">
                             <div className="w3-white w3-text-grey w3-card-4">
                                 <div className="w3-display-container">
-                                    <img src={boyImage} alt="Avatar" style={{ width: '100%' }} />
+                                   // <img src={boyImage} alt="Avatar" style={{ width: '100%' }} />
                                     <div className="w3-display-bottomleft w3-container w3-text-black">
                                         <h2>Lim Wen Jun</h2>
                                     </div>

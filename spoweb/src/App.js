@@ -5,9 +5,7 @@ import Modal from 'react-modal';
 import CustomCaptcha from './CustomCaptcha';
 import { captchaData, voiceCaptchaData } from './captchaData';
 import SpeechRecognition from 'react-speech-recognition';
-import SashaResume from './SashaResume';
-import Resume from './Resume';
-import jessicaResume from './jessicaResume';
+import JessicaResume from './jessicaResume';
 
 
 const App = () => {
@@ -162,7 +160,7 @@ const App = () => {
   return (
     <>
       <div style={backgroundBlurStyle}>
-        < jessicaResume />
+        <JessicaResume />
       </div>
       {!isVerified && (
         <Modal
