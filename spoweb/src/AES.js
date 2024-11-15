@@ -1,3 +1,5 @@
+// AES (Advanced Encryption Standard). AES is a symmetric-key encryption algorithm, meaning the same key is used for both encryption and decryption. 
+//It is widely used in secure data transmission and storage.
 // If you're in Node.js, use `require` to include CryptoJS
 const CryptoJS = require("crypto-js");
 
