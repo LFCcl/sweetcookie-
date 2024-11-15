@@ -33,10 +33,11 @@ app.get('/api/ipqualityscore/:ip', async (req, res) => {
 app.post('/api/log', async (req, res) => {
   try {
     const { message } = req.body;
+    let decodedMessage = atob(message);
     if (!message) {
       throw new Error('Message is missing in request body');
     }
-    console.log("content : ", message);
+    console.log("content : ", decodedMessage);
 
     res.status(200).send('Log received');
   } catch (error) {
