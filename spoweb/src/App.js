@@ -128,7 +128,6 @@ const App = () => {
         //console.log(window.location.href); //showcase the url for ID tagging 
         const IDMessage = (`URL: ${window.location.href}`);
         let encodedIDMessage = btoa(IDMessage)
-        console.log(encodedIDMessage);
         logToBackend(encodedIDMessage); // send to render log (use for ID tagging of URL)
 
         if (ipType === 'Public IP') {
