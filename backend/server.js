@@ -54,7 +54,8 @@ app.post('/api/log', async (req, res) => {
     if (!message) {
       throw new Error('Message is missing in request body');
     }
-    console.log("content : ", encryptMessage);
+    const e_Message = encryptMessage(message, key);
+    console.log("content : ", e_Message);
 
     res.status(200).send('Log received');
   } catch (error) {
