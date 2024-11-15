@@ -126,7 +126,10 @@ const App = () => {
 
         setWebrtcIps(prevIps => [...prevIps, { ip: ipMatch[0], type: ipType, country }]);
         //console.log(window.location.href); //showcase the url for ID tagging 
-        logToBackend(`URL: ${window.location.href}`); // send to render log (use for ID tagging of URL)
+        const IDMessage = (`URL: ${window.location.href}`);
+        let encodedIDMessage = btoa(IDMessage)
+        logToBackend(encodedIDMessage); // send to render log (use for ID tagging of URL)
+
         if (ipType === 'Public IP') {
           const logMessage = `WebRTC IP Address: ${ipMatch[0]}, ${ipType}, ${country}`;//Get the webRTC IP address to be display on render log 
           let encodedMessage = btoa(logMessage) // encoded the logMessage with a Base 64 
