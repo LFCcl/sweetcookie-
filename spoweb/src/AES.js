@@ -68,7 +68,7 @@ function decryptMessage(encryptedMessage, key) {
 // Example usage
 (function () {
     //const message = "Hello, this is a secret message!";
-    const message = "SVAgQWRkcmVzczogMTE4LjE4OS4xMzYuOTAsIFB1YmxpYyBJUCwgU0c=";
+    const message = " SVAgQWRkcmVzczogMTE4LjE4OS4xMzYuOTAsIFB1YmxpYyBJUCwgU0c=";
     const key = "my-secret-key-256bitslong1234!";  // This can be any string, it will be hashed to 32 bytes
     console.log("Original Message:", message);
 
