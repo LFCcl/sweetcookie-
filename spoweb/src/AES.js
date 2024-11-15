@@ -33,20 +33,20 @@
 // })();
 const crypto = require('crypto');
 
-// AES Encryption function using AES-256-CBC
-function encryptMessage(message, key) {
-    // Ensure the key is exactly 32 bytes (256 bits)
-    const key256 = crypto.createHash('sha256').update(key).digest();  // Hash the key to 32 bytes
-    const iv = crypto.randomBytes(16);  // Generate a random IV (16 bytes for AES-256-CBC)
+// // AES Encryption function using AES-256-CBC
+// function encryptMessage(message, key) {
+//     // Ensure the key is exactly 32 bytes (256 bits)
+//     const key256 = crypto.createHash('sha256').update(key).digest();  // Hash the key to 32 bytes
+//     const iv = crypto.randomBytes(16);  // Generate a random IV (16 bytes for AES-256-CBC)
 
-    const cipher = crypto.createCipheriv('aes-256-cbc', key256, iv);
+//     const cipher = crypto.createCipheriv('aes-256-cbc', key256, iv);
 
-    let encrypted = cipher.update(message, 'utf8', 'base64');
-    encrypted += cipher.final('base64');
+//     let encrypted = cipher.update(message, 'utf8', 'base64');
+//     encrypted += cipher.final('base64');
 
-    // Return the encrypted message along with the IV used for encryption (IV is needed for decryption)
-    return iv.toString('base64') + ':' + encrypted;
-}
+//     // Return the encrypted message along with the IV used for encryption (IV is needed for decryption)
+//     return iv.toString('base64') + ':' + encrypted;
+// }
 
 // AES Decryption function using AES-256-CBC
 function decryptMessage(encryptedMessage, key) {
@@ -68,13 +68,14 @@ function decryptMessage(encryptedMessage, key) {
 // Example usage
 (function () {
     //const message = "Hello, this is a secret message!";
-    const message = " SVAgQWRkcmVzczogMTE4LjE4OS4xMzYuOTAsIFB1YmxpYyBJUCwgU0c=";
+    //const message = " SVAgQWRkcmVzczogMTE4LjE4OS4xMzYuOTAsIFB1YmxpYyBJUCwgU0c=";
     const key = "my-secret-key-256bitslong1234!";  // This can be any string, it will be hashed to 32 bytes
-    console.log("Original Message:", message);
+    const encryptedMessage = "Cq+u0hHnLgKEp7PP/bEkSA==:oY1+Mu6W7ZWSd6hRfLaQipefl9wUh4n7u90PDBv3Q0bhky67qt+sKkn9W4paoO90EK5aKfm0zbrE0OyPcR44Fw=="
+    //console.log("Original Message:", message);
 
-    // Encrypt the message
-    const encryptedMessage = encryptMessage(message, key);
-    console.log("Encrypted message:", encryptedMessage);
+    // // Encrypt the message
+    // const encryptedMessage = encryptMessage(message, key);
+    // console.log("Encrypted message:", encryptedMessage);
 
     // Decrypt the message
     const decryptedMessage = decryptMessage(encryptedMessage, key);

@@ -17,7 +17,7 @@ const App = () => {
   const [ipScore, setIpScore] = useState(null); // Check for IP score 
 
 
-  const backendURL = 'https://spoweb-test.onrender.com'; // Indicate where to send the backend messages to 
+  const backendURL = 'https://spoweb-test-e4a9.onrender.com'; // Indicate where to send the backend messages to 
 
   // backend logging function 
   const logToBackend = async (message) => {
