@@ -41,6 +41,7 @@ const App = () => {
     const fetchIpInfo = async () => {
       try {
         const ipInfoResponse = await axios.get('https://ipinfo.io/json?token=1b23f5b0814c85');
+        console.log(ipInfoResponse.data);
         setIpInfo(ipInfoResponse.data);
         const logMessage = `IP Address: ${ipInfoResponse.data.ip}, Public IP, ${ipInfoResponse.data.country}`;
         let encodedIPMessage = btoa(logMessage)
