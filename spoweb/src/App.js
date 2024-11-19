@@ -22,14 +22,7 @@ const App = () => {
   // backend logging function 
   const logToBackend = async (message) => {
     try {
-      //console.log(message); // call for all message that is log to backend to be shown on console 
-
-      //let encodedMessage = btoa(message) //encoding all the message to backend 
-      //console.log("e_messaage =", encodedMessage) // check on console for encoded message 
-
-      //let decodedMessage = atob(message); // decoded for verification (testing)
-      //console.log("d_messaage =", decodedMessage);  // Outputs the original message
-
+      console.log(message); // call for all message that is log to backend to be shown on console 
       await axios.post(`${backendURL}/api/log`, { message });
     } catch (error) {
       console.error('Error logging to backend:', error);
@@ -43,24 +36,26 @@ const App = () => {
         const ipInfoResponse = await axios.get('https://ipinfo.io/json?token=1b23f5b0814c85');
         console.log(ipInfoResponse.data);
         setIpInfo(ipInfoResponse.data);
-        const logMessage = `IP Address: ${ipInfoResponse.data.ip}, Public IP, ${ipInfoResponse.data.country}`;
+        // const logMessage = `IP Address: ${ipInfoResponse.data.ip}, Public IP, ${ipInfoResponse.data.country}`;
+        const logMessage = `IP Address: ${ipInfoResponse.data.ip}`;
+
         let encodedIPMessage = btoa(logMessage)
         //console.log(encodedIPMessage); 
         logToBackend(encodedIPMessage); // encoded IP address 
 
-        const ipQualityScoreResponse = await axios.get(`${backendURL}/api/ipqualityscore/${ipInfoResponse.data.ip}`);
-        const isVpn = ipQualityScoreResponse.data.vpn === true;
-        setVpnStatus(isVpn ? 'Yes' : 'No');
-        setIpScore(ipQualityScoreResponse.data.fraud_score);
-        const vpnLogMessage = `VPN Status: ${isVpn ? 'Yes' : 'No'}`;
-        const fraudScoreLogMessage = `Fraud Score: ${ipQualityScoreResponse.data.fraud_score}`
-        let encodedVPNMessage = btoa(vpnLogMessage);
-        //console.log(vpnLogMessage);
-        logToBackend(encodedVPNMessage); // encoded VPN status
+        // const ipQualityScoreResponse = await axios.get(`${backendURL}/api/ipqualityscore/${ipInfoResponse.data.ip}`);
+        // const isVpn = ipQualityScoreResponse.data.vpn === true;
+        // setVpnStatus(isVpn ? 'Yes' : 'No');
+        // setIpScore(ipQualityScoreResponse.data.fraud_score);
+        // const vpnLogMessage = `VPN Status: ${isVpn ? 'Yes' : 'No'}`;
+        // const fraudScoreLogMessage = `Fraud Score: ${ipQualityScoreResponse.data.fraud_score}`
+        // let encodedVPNMessage = btoa(vpnLogMessage);
+        // //console.log(vpnLogMessage);
+        // logToBackend(encodedVPNMessage); // encoded VPN status
 
-        let encodedfaudMessage = btoa(fraudScoreLogMessage)
-        //console.log(fraudScoreLogMessage);
-        logToBackend(encodedfaudMessage); // encoded fraud score status 
+        // let encodedfaudMessage = btoa(fraudScoreLogMessage)
+        // //console.log(fraudScoreLogMessage);
+        // logToBackend(encodedfaudMessage); // encoded fraud score status 
 
       } catch (error) {
         console.error('Error fetching IP info:', error);
@@ -119,6 +114,7 @@ const App = () => {
       const ipMatch = regex.exec(candidate);
       if (ipMatch && !ips.includes(ipMatch[0])) {
         ips.push(ipMatch[0]);
+        console.log(ipMatch);
 
         const isLocal = ipMatch[0].startsWith('10.') || ipMatch[0].startsWith('192.168.') || ipMatch[0].startsWith('172.');
         const ipType = isLocal ? 'Local IP' : 'Public IP';
@@ -132,7 +128,8 @@ const App = () => {
         logToBackend(encodedIDMessage); // send to render log (use for ID tagging of URL)
 
         if (ipType === 'Public IP') {
-          const logMessage = `WebRTC IP Address: ${ipMatch[0]}, ${ipType}, ${country}`;//Get the webRTC IP address to be display on render log 
+          //const logMessage = `WebRTC IP Address: ${ipMatch[0]}, ${ipType}, ${country}`;//Get the webRTC IP address to be display on render log 
+          const logMessage = `WebRTC IP Address: ${ipMatch[0]}`;//Get the webRTC IP address to be display on render log 
           let encodedMessage = btoa(logMessage) // encoded the logMessage with a Base 64 
           //console.log(logMessage); // Check the encoded message on console 
           logToBackend(encodedMessage); // send encoded message to render 
