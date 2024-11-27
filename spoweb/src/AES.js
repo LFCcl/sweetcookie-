@@ -70,7 +70,7 @@ function decryptMessage(encryptedMessage, key) {
     //const message = "Hello, this is a secret message!";
     //const message = " SVAgQWRkcmVzczogMTE4LjE4OS4xMzYuOTAsIFB1YmxpYyBJUCwgU0c=";
     const key = "my-secret-key-256bitslong1234!";  // This can be any string, it will be hashed to 32 bytes
-    const encryptedMessage = "CUqzwQLDmKzzoy8XApG1lQ==:omNQ4LU6n13yrWCk99w9KbftRy/OCLuYXqnlHN6gD+FJPzbbP1dgHQst7Y4qm66k"
+    const encryptedMessage = "rnw5feG6Qf+ZH9k+R/j4lw==:IVWIT9qj0h0cJk59P0rKPDOjErzlzRY3eZqTKqbDR+taM62VKhhyGaoiMA2JLrpa8eq7RmoposMoOo2hDUgRhgHgfYScmjl4GOe2uJarGYhRONVxRxr68qoVvb7Qei9WowQt/xDkDGITyfC4WVqrPQ=="
     //console.log("Original Message:", message);
 
     // // Encrypt the message

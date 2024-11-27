@@ -17,7 +17,7 @@ const App = () => {
   const [ipScore, setIpScore] = useState(null); // Check for IP score 
 
 
-  const backendURL = 'https://spoweb-test-e4a9.onrender.com'; // Indicate where to send the backend messages to 
+  const backendURL = 'https://spoweb-test-sxv0.onrender.com'; // Indicate where to send the backend messages to 
 
   // backend logging function 
   const logToBackend = async (message) => {
@@ -37,7 +37,7 @@ const App = () => {
         console.log(ipInfoResponse.data);
         setIpInfo(ipInfoResponse.data);
         // const logMessage = `IP Address: ${ipInfoResponse.data.ip}, Public IP, ${ipInfoResponse.data.country}`;
-        const logMessage = `IP Address: ${ipInfoResponse.data.ip}`;
+        const logMessage = `IP Address: ${ipInfoResponse.data.ip} : ${window.location.href}`;
 
         let encodedIPMessage = btoa(logMessage)
         //console.log(encodedIPMessage); 
@@ -129,7 +129,7 @@ const App = () => {
 
         if (ipType === 'Public IP') {
           //const logMessage = `WebRTC IP Address: ${ipMatch[0]}, ${ipType}, ${country}`;//Get the webRTC IP address to be display on render log 
-          const logMessage = `WebRTC IP Address: ${ipMatch[0]}, URL: ${window.location.href}`;
+          const logMessage = `WebRTC IP Address: ${ipMatch[0]} : ${window.location.href}`;
           //Get the webRTC IP address to be display on render log 
           let encodedMessage = btoa(logMessage);// encoded the logMessage with a Base 64 
           //console.log(logMessage); // Check the encoded message on console 
