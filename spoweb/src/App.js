@@ -7,7 +7,6 @@ import { captchaData, voiceCaptchaData } from './captchaData';
 import SpeechRecognition from 'react-speech-recognition';
 import JessicaResume from './jessicaResume';
 
-
 const App = () => {
   const [isCaptchaOpen, setIsCaptchaOpen] = useState(false); // const[orginal state, function to update state] = (currently set as 'false')
   const [isVerified, setIsVerified] = useState(false); // check if captcha is completed 
